@@ -1,8 +1,8 @@
 # Use the official Node.js runtime as the base image
 FROM node:18-alpine
 
-# Set the working directory to match metamcp's expected structure
-WORKDIR /app/apps/backend
+# Set the working directory in the container
+WORKDIR /app
 
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
@@ -15,6 +15,12 @@ COPY . .
 
 # Build the TypeScript code
 RUN npm run build
+
+# Create the directory structure that metamcp expects
+RUN mkdir -p /app/apps/backend/dist
+
+# Copy the built MCP server to the expected location
+RUN cp /app/dist/mcp-server.js /app/apps/backend/dist/mcp-server.js
 
 # Remove devDependencies after build to reduce image size
 RUN npm prune --production
