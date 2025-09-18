@@ -1,8 +1,8 @@
 # Use the official Node.js runtime as the base image
 FROM node:18-alpine
 
-# Set the working directory in the container
-WORKDIR /app
+# Set the working directory to match metamcp's expected structure
+WORKDIR /app/apps/backend
 
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
