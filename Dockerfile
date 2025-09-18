@@ -16,14 +16,11 @@ COPY . .
 # Build the TypeScript code
 RUN npm run build
 
-# Create the directory structure that metamcp expects
-RUN mkdir -p /app/apps/backend/dist
-
-# Copy the built MCP server to the expected location
-RUN cp /app/dist/mcp-server.js /app/apps/backend/dist/mcp-server.js
-
 # Remove devDependencies after build to reduce image size
 RUN npm prune --production
+
+# Ensure the built file has proper permissions
+RUN chmod +x /app/dist/mcp-server.js
 
 # Create a non-root user to run the application
 RUN addgroup -g 1001 -S nodejs
