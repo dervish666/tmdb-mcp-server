@@ -2,11 +2,13 @@
   "name": "tmdb-mcp-server",
   "version": "1.0.0",
   "description": "MCP server for TMDB (The Movie Database) integration.",
-  "main": "dist/server.js",
+  "main": "dist/mcp-server.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node src/server.ts"
+    "mcp": "node dist/mcp-server.js",
+    "dev": "ts-node src/server.ts",
+    "dev:mcp": "ts-node src/mcp-server.ts"
   },
   "keywords": [
     "mcp",
