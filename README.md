@@ -89,7 +89,7 @@ npm start
 
 The main MCP endpoint is available at:
 ```
-POST http://localhost:12010/mcp
+POST http://localhost:12011/mcp
 ```
 
 ### Health Check
